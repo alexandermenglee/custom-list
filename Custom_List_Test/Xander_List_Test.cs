@@ -28,7 +28,6 @@ namespace Custom_List_Test
 
     [TestMethod]
     [ExpectedException(typeof(IndexOutOfRangeException))]
-    // Return false bc index does not exist
     public void Indexer_IndexExists_ReturnFalse()
     {
       // Arrange
@@ -37,7 +36,7 @@ namespace Custom_List_Test
       testList.Add(2);
       testList.Add(3);
       testList.Add(4);
-      bool actual;
+      int actual;
 
       // Act
       actual = testList[9];
@@ -55,8 +54,9 @@ namespace Custom_List_Test
       int actual;
 
       // Act
+      testList.Add(7);
+      actual = testList[testList.Count - 1];
 
-      actual = testList[0];
       // Assert
       Assert.AreEqual(expected, actual);
     }
