@@ -11,8 +11,6 @@ namespace Custom_List_Test
     // return element at index asked for
     public void Indexer_GetIndexOfArray_GetElementAtIndex()
     {
-      /* As a developer, I want to create a C# indexer so that I can make the objects in my list accessible via index. I want to properly ensure that a user cannot access an out-of-bounds index. */
-
       // Arrange
       XanderList<int> testList = new XanderList<int>();
       testList.Add(0);
@@ -63,6 +61,7 @@ namespace Custom_List_Test
       Assert.AreEqual(expected, actual);
     }
 
+    [TestMethod]
     public void Add_AddToEndOfList_IndexOfElementEqualsCount()
     {
       // Arrange
