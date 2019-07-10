@@ -12,7 +12,7 @@ namespace CustomList
     private int count;
     private int capacity;
     // access level type [ ] < Name_Array > = new < datatype > [size];
-    public T[] list;
+    public T[] list = new T[4];
 
     // Properties
     public int Count
@@ -33,10 +33,13 @@ namespace CustomList
     // Constructor
     public XanderList()
     {
-        
+      
     }
 
     // Member methods
-
+    public void Add(T input)
+    {
+  
+    }
   }
 }
