@@ -11,7 +11,8 @@ namespace CustomList
     // Member variables
     private int count;
     private int capacity;
-    private T[] list;
+    // access level type [ ] < Name_Array > = new < datatype > [size];
+    public T[] list;
 
     // Properties
     public int Count
@@ -22,11 +23,20 @@ namespace CustomList
     {
       get => capacity;
     }
+    // indexer, allows user to use bracket notation
+    public T this[int i]
+    {
+      get => list[i];
+      set => list[i] = value;
+    }
 
     // Constructor
     public XanderList()
     {
-      
+        
     }
+
+    // Member methods
+
   }
 }
