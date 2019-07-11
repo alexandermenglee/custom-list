@@ -69,5 +69,10 @@ namespace CustomList
       count++;
     }
 
+    public bool Remove()
+    {
+
+    }
+
   }
 }
