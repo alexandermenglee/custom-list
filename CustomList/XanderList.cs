@@ -85,10 +85,15 @@ namespace CustomList
             list[j] = list[j + 1];
           }
           count--;
-          return true;
+          return true;  
         }
       }
       return false;
+    }
+
+    public override string ToString()
+    {
+      return "";
     }
 
   }

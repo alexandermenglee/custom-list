@@ -179,5 +179,114 @@ namespace Custom_List_Test
       Assert.AreEqual(expected, actual);
     }
 
+    [TestMethod]
+    public void ToString_Int_ReturnAllIntsWithSpaceBetween()
+    {
+      // Assign
+      XanderList<int> testList = new XanderList<int>();
+      testList.Add(1);
+      testList.Add(2);
+      testList.Add(3);
+      testList.Add(4);
+
+      string expected = "1 2 3 4";
+      string actual;
+
+      // Act
+      actual = testList.ToString();
+
+      // Assert
+      Assert.AreEqual(expected, actual);
+    }
+
+    [TestMethod]
+    public void ToString_Double_ReturnAllDoublesWithSpaceBetween()
+    {
+      // Assign
+      string expected;
+      string actual;
+
+      XanderList<double> testList = new XanderList<double>();
+      testList.Add(3.1);
+      testList.Add(7.78);
+      testList.Add(4.53);
+      testList.Add(90.90890);
+      testList.Add(56.588);
+
+      // Act
+      expected = "3.1 7.78 4.53 90.90890 56.588";
+      actual = testList.ToString();
+
+      // Assert
+      Assert.AreEqual(expected, actual);
+    }
+
+    [TestMethod]
+    public void ToString_String_ReturnAllStringsWithSpaceBetween()
+    {
+      // Arrange
+      string expected;
+      string actual;
+
+      XanderList<string> testList = new XanderList<string>();
+      testList.Add("testing");
+      testList.Add("the");
+      testList.Add("tostring");
+      testList.Add("method,");
+      testList.Add("did");
+      testList.Add("it");
+      testList.Add("work?");
+
+      // Act
+      expected = "testing the tostring method, did it work?";
+      actual = testList.ToString();
+
+      // Assert
+      Assert.AreEqual(expected, actual);
+    }
+
+    [TestMethod]
+    public void ToString_Object_ReturnObjectToString()
+    {
+      // Assign
+      string expected;
+      string actual;
+
+      XanderList<ObjTestClass> testList = new XanderList<ObjTestClass>();
+      testList.Add(new ObjTestClass("John"));
+      testList.Add(new ObjTestClass("Wick"));
+      testList.Add(new ObjTestClass());
+      testList.Add(new ObjTestClass());
+
+      // Act
+      expected = "CustomList.ObjTestClass CustomList.ObjTestClass CustomList.ObjTestClass CustomList.ObjTestClass";
+      actual = testList.ToString();
+
+      //Assert
+      Assert.AreEqual(expected, actual);
+    }
+
+    [TestMethod]
+    public void ToString_Boolean_ReturnBooleanValuesWithSpacesBetween()
+    {
+      // Assign 
+      string expected;
+      string actual;
+
+      XanderList<bool> testList = new XanderList<bool>();
+      testList.Add(true);
+      testList.Add(true);
+      testList.Add(true);
+      testList.Add(false);
+      testList.Add(false);
+      testList.Add(false);
+
+      // Act 
+      expected = "true true true false false false";
+      actual = testList.ToString();
+
+      // Assert
+      Assert.AreEqual(expected, actual);
+    }
   }
 }
