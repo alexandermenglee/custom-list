@@ -80,12 +80,22 @@ namespace CustomList
       {
         if(list[i].Equals(value))
         {
-          for(int j = i; j < count - 1; j++)
+          if(count == 1)
           {
-            list[j] = list[j + 1];
+            capacity = 4;
+            list = new T[capacity];
+            count = 0;
+            return true;
           }
-          count--;
-          return true;  
+          else
+          {
+            for (int j = i; j < count - 1; j++)
+            {
+              list[j] = list[j + 1];
+            }
+            count--;
+            return true;
+          }
         }
       }
       return false;
@@ -93,7 +103,51 @@ namespace CustomList
 
     public override string ToString()
     {
-      return "";
+      // instantiate empty string variable
+      // loop through array(list)
+      // concatenate each element to the empty string
+
+      string arrayValuesToString = "";
+
+      for(int i = 0; i < count; i++)
+      {
+        if(i == count - 1)
+        {
+          arrayValuesToString += list[i];
+        }
+        else
+        {
+          // need to cast type to string
+          arrayValuesToString += list[i] + " ";
+        }
+      }
+
+      return arrayValuesToString;
+    }
+
+    // + operator overload method
+    public static XanderList<T> operator +(XanderList<T> list1, XanderList<T> list2)
+    {
+      XanderList<T> joinedList = new XanderList<T>();
+
+      for(int i = 0; i < list1.Count; i++)
+      {
+        joinedList.Add(list1[i]);
+      }
+
+      for (int i = 0; i < list2.Count; i++)
+      {
+        joinedList.Add(list2[i]);
+      }
+
+      return joinedList;
+    }
+
+    // - operator overload method
+    public static XanderList<T> operator -(XanderList<T> modifiedList, XanderList<T> checkList)
+    {
+
+      return modifiedList;
     }
 
   }

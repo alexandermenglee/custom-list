@@ -7,6 +7,9 @@ namespace Custom_List_Test
   [TestClass]
   public class Xander_List_Test
   {
+    // ***********************************************************************
+    // INDEXER UNIT TESTS
+
     [TestMethod]
     // return element at index asked for
     public void Indexer_GetIndexOfArray_GetElementAtIndex()
@@ -48,6 +51,9 @@ namespace Custom_List_Test
       // Assert
       // ExpectedException attribute is expecting an IndexOutOfRangeException to be thrown
     }
+
+    // ***********************************************************************
+    // REMOVE UNIT TESTS
 
     [TestMethod]
     public void Add_AddToList_ListContainsElement()
@@ -99,6 +105,9 @@ namespace Custom_List_Test
       Assert.AreEqual(expected, actual);
     }
 
+    // ***********************************************************************
+    // REMOVE UNIT TESTS
+
     [TestMethod]
     public void Remove_RemoveElementWithValue_CountIsDecremented()
     {
@@ -145,7 +154,7 @@ namespace Custom_List_Test
       testList.Add(4);
       bool expected = true;
       bool actual;
-      
+
       // Act
       actual = testList.Remove(3);
 
@@ -174,10 +183,53 @@ namespace Custom_List_Test
       // Act
       testList.Remove(7);
       actual = testList[6];
-      
+
       // Assert
       Assert.AreEqual(expected, actual);
     }
+
+    [TestMethod]
+    public void Remove_RemoveLastIndex_LastIndexIsRemoved()
+    {
+      // Assign
+      int expected;
+      int actual;
+
+      XanderList<int> testList = new XanderList<int>();
+      testList.Add(1);
+      testList.Add(2);
+
+      // Act
+      expected = 1;
+      testList.Remove(2);
+      actual = testList[0];
+
+      // Assert
+      Assert.AreEqual(expected, actual);
+    }
+
+    [TestMethod]
+    public void Remove_RemoveOnlyValue_CountIsZero()
+    {
+      // Assign
+      int expected;
+      int actual;
+
+      XanderList<int> testList = new XanderList<int>();
+      testList.Add(1);
+
+      // Act
+      expected = 0;
+      testList.Remove(1);
+      actual = testList.Count;
+
+      // Assert
+      Assert.AreEqual(expected, actual);
+    }
+
+
+    // ***********************************************************************
+    // TOSTRING UNIT TESTS
 
     [TestMethod]
     public void ToString_Int_ReturnAllIntsWithSpaceBetween()
@@ -208,13 +260,13 @@ namespace Custom_List_Test
 
       XanderList<double> testList = new XanderList<double>();
       testList.Add(3.1);
-      testList.Add(7.78);
-      testList.Add(4.53);
-      testList.Add(90.90890);
-      testList.Add(56.588);
+      testList.Add(3.2);
+      testList.Add(3.3);
+      testList.Add(90.9876770000);
+      testList.Add(56.7891770000);
 
       // Act
-      expected = "3.1 7.78 4.53 90.90890 56.588";
+      expected = "3.1 3.2 3.3 90.987677 56.789177";
       actual = testList.ToString();
 
       // Assert
@@ -282,11 +334,190 @@ namespace Custom_List_Test
       testList.Add(false);
 
       // Act 
-      expected = "true true true false false false";
+      expected = "True True True False False False";
       actual = testList.ToString();
 
       // Assert
       Assert.AreEqual(expected, actual);
+    }
+
+    // ***********************************************************************
+    // ADDITION OPERATOR UNIT TESTS
+
+    [TestMethod]
+    public void AdditionOperator_JoinTwoLists_ReturnOneList()
+    {
+      // Arrange
+      XanderList<int> expected = new XanderList<int>();
+      XanderList<int> actual = new XanderList<int>();
+      XanderList<int> testList1 = new XanderList<int>();
+      XanderList<int> testList2 = new XanderList<int>();
+      testList1.Add(1);
+      testList1.Add(2);
+      testList2.Add(3);
+      testList2.Add(4);
+      expected.Add(1);
+      expected.Add(2);
+      expected.Add(3);
+      expected.Add(4);
+
+      // Act
+      actual = testList1 + testList2;
+
+      // Assert
+      Assert.AreEqual(expected.ToString(), actual.ToString());
+    }
+
+    [TestMethod]
+    public void AdditionOperator_AddCountOfBothLists_CountEqualsBothListCounts()
+    {
+      // Arrange
+      int expected;
+      int actual;
+      XanderList<int> testList1 = new XanderList<int>();
+      XanderList<int> testList2 = new XanderList<int>();
+      XanderList<int> returnedList = new XanderList<int>();
+      testList1.Add(1);
+      testList1.Add(2);
+      testList2.Add(3);
+      testList2.Add(4);
+
+      // Act
+      expected = 4;
+      returnedList = testList1 + testList2;
+      actual = returnedList.Count;
+
+      // Assert
+      Assert.AreEqual(expected, actual);
+    }
+
+    [TestMethod]
+    public void AdditionOperator_DifferentSizedLists_ReturnListContainingAllValues()
+    {
+      // Arrange
+      XanderList<int> actual = new XanderList<int>();
+      XanderList<int> expected = new XanderList<int>();
+      XanderList<int> testList1 = new XanderList<int>();
+      XanderList<int> testList2 = new XanderList<int>();
+
+      // add to testList1
+      testList1.Add(1);
+      testList1.Add(2);
+      testList1.Add(3);
+
+      // add to testList2
+      testList2.Add(4);
+      testList2.Add(5);
+
+      // add to expected XanderList
+      expected.Add(1);
+      expected.Add(2);
+      expected.Add(3);
+      expected.Add(4);
+      expected.Add(5);
+
+      // Act
+      actual = testList1 + testList2;
+
+      // Assert
+      Assert.AreEqual(expected.ToString(), actual.ToString());
+    }
+
+    // ***********************************************************************
+    // SUBTRACTION OPERATOR UNIT TESTS
+
+    [TestMethod]
+    public void SubtractionOperator_RemoveFromList_ReturnListWithCorrectValues()
+    {
+      // Assign
+      XanderList<int> expected = new XanderList<int>();
+      XanderList<int> actual = new XanderList<int>();
+      XanderList<int> testList1 = new XanderList<int>();
+      XanderList<int> testList2 = new XanderList<int>();
+
+      // add to list1
+      testList1.Add(20);
+      testList1.Add(33);
+      testList1.Add(57);
+      testList1.Add(10);
+
+      // add to list2
+      testList2.Add(100);
+      testList2.Add(57);
+      testList2.Add(1009);
+      testList2.Add(20);
+
+      // add to expected XanderList
+      expected.Add(33);
+      expected.Add(10);
+
+      // Act
+      actual = testList1 - testList2;
+
+      // Assert
+      Assert.AreEqual(expected.ToString(), actual.ToString());
+    }
+
+    [TestMethod]
+    public void SubtractionOperator_DifferentSizedLists_ReturnListWithCorrectValues()
+    {
+      // Assign
+      XanderList<int> expected = new XanderList<int>();
+      XanderList<int> actual = new XanderList<int>();
+      XanderList<int> testList1 = new XanderList<int>();
+      XanderList<int> testList2 = new XanderList<int>();
+
+      // add to list1
+      testList1.Add(21);
+      testList1.Add(22);
+      testList1.Add(23);
+      testList1.Add(24);
+
+      // add to list2
+      testList2.Add(100);
+      testList2.Add(57);
+      testList2.Add(1009);
+      testList2.Add(21);
+      testList2.Add(20);
+
+      // add to expected XanderList
+      expected.Add(22);
+      expected.Add(23);
+      expected.Add(24);
+
+      // Act
+      actual = testList1 - testList2;
+
+      // Assert
+      Assert.AreEqual(expected.ToString(), actual.ToString());
+    }
+
+    [TestMethod]
+    public void SubtractionOperator_BothListsHaveSameValues_ReturnEmptyList()
+    {
+      // Assign
+      XanderList<int> expected = new XanderList<int>();
+      XanderList<int> actual = new XanderList<int>();
+      XanderList<int> testList1 = new XanderList<int>();
+      XanderList<int> testList2 = new XanderList<int>();
+
+      // add to list1
+      testList1.Add(1);
+      testList1.Add(2);
+      testList1.Add(3);
+      testList1.Add(4);
+
+      // add to list2
+      testList2.Add(1);
+      testList2.Add(2);
+      testList2.Add(3);
+      testList2.Add(4);
+
+      // Act
+      actual = testList1 - testList2;
+
+      // Assert
+      Assert.AreEqual(expected.ToString(), actual.ToString());
     }
   }
 }
