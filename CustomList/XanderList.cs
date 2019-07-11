@@ -33,12 +33,18 @@ namespace CustomList
     // Constructor
     public XanderList()
     {
+      IntitializeNewArray();
+    }
+
+    // Member methods
+    private void IntitializeNewArray()
+    {
       capacity = 4;
       list = new T[capacity];
       count = 0;
     }
+    
 
-    // Member methods
     public void Add(T input)
     {
       // if count does not equal capacity add it into the list
@@ -82,9 +88,7 @@ namespace CustomList
         {
           if(count == 1)
           {
-            capacity = 4;
-            list = new T[capacity];
-            count = 0;
+            IntitializeNewArray();
             return true;
           }
           else
@@ -146,9 +150,17 @@ namespace CustomList
     // - operator overload method
     public static XanderList<T> operator -(XanderList<T> modifiedList, XanderList<T> checkList)
     {
-
+      for(int i = 0; i < checkList.Count; i++)
+      {
+        for(int j = 0; j < modifiedList.Count; j++)
+        {
+          if (checkList[i].Equals(modifiedList[j]))
+          {
+            modifiedList.Remove(modifiedList[j]);
+          }
+        }
+      }
       return modifiedList;
     }
-
   }
 }
