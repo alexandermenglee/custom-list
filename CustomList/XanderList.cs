@@ -69,9 +69,26 @@ namespace CustomList
       count++;
     }
 
-    public bool Remove()
+    public bool Remove(T value)
     {
-
+      // loop through array (list)
+      // check if element at i equals value
+      // if true 
+        // set the value of i to the value of i+1
+                
+      for(int i = 0; i < count; i++)
+      {
+        if(list[i].Equals(value))
+        {
+          for(int j = i; j < count - 1; j++)
+          {
+            list[j] = list[j + 1];
+          }
+          count--;
+          return true;
+        }
+      }
+      return false;
     }
 
   }
