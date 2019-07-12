@@ -41,16 +41,12 @@ namespace CustomList
     // Constructor
     public XanderList()
     {
-      IntitializeNewArray();
-    }
-
-    // Member methods
-    private void IntitializeNewArray()
-    {
       capacity = 4;
       list = new T[capacity];
       count = 0;
     }
+
+    // Member methods
     
     // Add method
     public void Add(T input)
@@ -170,6 +166,41 @@ namespace CustomList
         }
       }
       return modifiedList;
+    }
+
+    // Zip method
+    public XanderList<T> Zip(XanderList<T> zipperList)
+    {
+      // initialize longerList variable
+      // check if list or zipperlist has a bigger count and assign it to longerList
+      // for loop where i is less than longerList
+      // if i < list.Count, add list[i] to results
+      // if i < zipperList.Count add zipperList[i] to results
+
+      int loopLength;
+      XanderList<T> results = new XanderList<T>();
+
+      loopLength = count;
+
+      if(zipperList.Count > count)
+      {
+        loopLength = zipperList.Count;
+      }
+
+      for(int i = 0; i < loopLength; i++)
+      {
+        if(i < count)
+        {
+          results.Add(list[i]);
+        }
+
+        if(i < zipperList.Count)
+        {
+          results.Add(zipperList[i]);
+        }
+      }
+
+      return results;
     }
   }
 }

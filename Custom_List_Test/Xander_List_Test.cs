@@ -539,5 +539,211 @@ namespace Custom_List_Test
       // Assert
       Assert.AreEqual(expected.ToString(), actual.ToString());
     }
+
+    // ***********************************************************************
+    // ZIP METHOD UNIT TESTS
+
+    [TestMethod]
+    public void Zip_BothListsCountAreEqual_ListCountIsDoubled()
+    {
+      // Assign
+      int expected;
+      int actual;
+
+      XanderList<int> oddTestList = new XanderList<int>();
+      XanderList<int> evenTestList = new XanderList<int>();
+
+      // add to oddTestList
+      oddTestList.Add(1);
+      oddTestList.Add(3);
+      oddTestList.Add(5);
+
+      // add to evenTestList
+      evenTestList.Add(2);
+      evenTestList.Add(4);
+      evenTestList.Add(6);
+
+      // Act
+      oddTestList = oddTestList.Zip(evenTestList);
+      expected = 6;
+      actual = oddTestList.Count;
+
+      // Assert
+      Assert.AreEqual(expected, actual);
+    }
+
+    [TestMethod]
+    public void Zip_BothListsAreSameSize_ElementsAreInCorrectPosition()
+    {
+      // Assign
+      XanderList<int> expected = new XanderList<int>();
+      XanderList<int> actual = new XanderList<int>();
+      XanderList<int> oddTestList = new XanderList<int>();
+      XanderList<int> evenTestList = new XanderList<int>();
+
+      // add to oddTestList
+      oddTestList.Add(1);
+      oddTestList.Add(3);
+      oddTestList.Add(5);
+
+      // add to evenTestList
+      evenTestList.Add(2);
+      evenTestList.Add(4);
+      evenTestList.Add(6);
+
+      // add to expected list
+      expected.Add(1);
+      expected.Add(2);
+      expected.Add(3);
+      expected.Add(4);
+      expected.Add(5);
+      expected.Add(6);
+
+      // Act
+      actual = oddTestList.Zip(evenTestList);
+
+      // Assert
+      Assert.AreEqual(expected.ToString(), actual.ToString());
+    }
+
+    [TestMethod]
+    public void Zip_ParameterListIsLonger_ElementsAreAtCorrectPosition()
+    {
+      // Assign
+      XanderList<int> expected  = new XanderList<int>();
+      XanderList<int> actual = new XanderList<int>();
+      XanderList<int> testList1 = new XanderList<int>();
+      XanderList<int> testList2 = new XanderList<int>();
+
+      // add to testList1
+      testList1.Add(1);
+      testList1.Add(2);
+      testList1.Add(3);
+
+      // add to testList2
+      testList2.Add(1);
+      testList2.Add(2);
+      testList2.Add(3);
+      testList2.Add(4);
+      testList2.Add(5);
+
+      // addd to expected list
+      expected.Add(1);
+      expected.Add(1);
+      expected.Add(2);
+      expected.Add(2);
+      expected.Add(3);
+      expected.Add(3);
+      expected.Add(4);
+      expected.Add(5);
+
+      // Act
+      actual = testList1.Zip(testList2);
+
+      // Assert
+      Assert.AreEqual(expected.ToString(), actual.ToString());
+    }
+
+    [TestMethod]
+    public void Zip_ParameterListShorter_ElementsAreAtCorrectPosition()
+    {
+      // Assign
+      XanderList<int> expected = new XanderList<int>();
+      XanderList<int> actual = new XanderList<int>();
+      XanderList<int> testList1 = new XanderList<int>();
+      XanderList<int> testList2 = new XanderList<int>();
+
+      // add to testList1
+      testList1.Add(1);
+      testList1.Add(2);
+      testList1.Add(3);
+      testList1.Add(4);
+      testList1.Add(5);
+
+      // add to testList2
+      testList2.Add(1);
+      testList2.Add(2);
+      testList2.Add(3);
+
+      // addd to expected list
+      expected.Add(1);
+      expected.Add(1);
+      expected.Add(2);
+      expected.Add(2);
+      expected.Add(3);
+      expected.Add(3);
+      expected.Add(4);
+      expected.Add(5);
+
+      // Act
+      actual = testList1.Zip(testList2);
+
+      // Assert
+      Assert.AreEqual(expected.ToString(), actual.ToString());
+    }
+
+    [TestMethod]
+    public void Zip_OneListIsEmpty_ReturnSameList()
+    {
+      // Arrange
+      XanderList<int> expected = new XanderList<int>();
+      XanderList<int> actual = new XanderList<int>();
+      XanderList<int> testList1 = new XanderList<int>();
+      XanderList<int> testList2 = new XanderList<int>();
+
+      // add to testList1
+      testList1.Add(1);
+      testList1.Add(2);
+      testList1.Add(3);
+
+
+      // add to expected list
+      expected.Add(1);
+      expected.Add(2);
+      expected.Add(3);
+
+      // Act
+      actual = testList1.Zip(testList2);
+
+      // Assert
+      Assert.AreEqual(expected.ToString(), actual.ToString());
+    }
+
+    [TestMethod]
+    public void Zip_BothListsAreEmpty_CountIsZero()
+    {
+      // Arrange
+      int expected;
+      int actual;
+      
+      XanderList<int> testList1 = new XanderList<int>();
+      XanderList<int> testList2 = new XanderList<int>();
+
+      // Act
+      testList1 = testList1.Zip(testList2);
+      expected = 0;
+      actual = testList1.Count;
+
+      // Assert
+      Assert.AreEqual(expected, actual);
+    }
+
+    [TestMethod]
+    public void Zip_IntBothListsAreEmpty_ReturnAnEmptyList()
+    {
+      // Arrange
+      XanderList<int> expected = new XanderList<int>();
+      XanderList<int> actual = new XanderList<int>();
+
+      XanderList<int> testList1 = new XanderList<int>();
+      XanderList<int> testList2 = new XanderList<int>();
+
+      // Act
+      testList1 = testList1.Zip(testList2);
+
+      // Assert
+      Assert.AreEqual(expected.ToString(), actual.ToString());
+    }
+
   }
 }
