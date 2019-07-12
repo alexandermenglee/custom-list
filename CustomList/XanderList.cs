@@ -26,7 +26,15 @@ namespace CustomList
     // indexer, allows user to use bracket notation
     public T this[int i]
     {
-      get => list[i];
+      get
+      {
+        if (i >= count)
+        {
+          throw new System.IndexOutOfRangeException();
+        }
+        return list[i];
+      }
+        
       set => list[i] = value;
     }
 

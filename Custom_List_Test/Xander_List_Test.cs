@@ -35,7 +35,7 @@ namespace Custom_List_Test
 
     [TestMethod]
     [ExpectedException(typeof(IndexOutOfRangeException))]
-    public void Indexer_IndexExists_ReturnFalse()
+    public void Indexer_IndexExists_ThrowIndexOutOfRangeException()
     {
       // Arrange
       XanderList<int> testList = new XanderList<int>();
@@ -43,17 +43,18 @@ namespace Custom_List_Test
       testList.Add(2);
       testList.Add(3);
       testList.Add(4);
+      testList.Add(5);
       int actual;
 
       // Act
-      actual = testList[9];
+      actual = testList[6];
 
       // Assert
       // ExpectedException attribute is expecting an IndexOutOfRangeException to be thrown
     }
 
     // ***********************************************************************
-    // REMOVE UNIT TESTS
+    // ADD UNIT TESTS
 
     [TestMethod]
     public void Add_AddToList_ListContainsElement()
@@ -126,6 +127,26 @@ namespace Custom_List_Test
       // Assert
       Assert.AreEqual(expected, actual);
     }
+
+    [TestMethod]
+    public void Remove_ElementNotInList_CountInNotDecremented()
+    {
+      // Arrange
+      int expected;
+      int actual;
+
+      XanderList<int> testList = new XanderList<int>();
+      testList.Add(1);
+      testList.Add(2);
+      testList.Add(3);
+
+      // Act
+      testList.Remove(7);
+      expected = 3;
+      actual = testList.Count;
+      // Assert
+    }
+
     [TestMethod]
     public void Remove_ElementDoesNotExist_ReturnFalse()
     {
@@ -226,7 +247,6 @@ namespace Custom_List_Test
       // Assert
       Assert.AreEqual(expected, actual);
     }
-
 
     // ***********************************************************************
     // TOSTRING UNIT TESTS
