@@ -80,9 +80,9 @@ namespace CustomList
       // loop through array (list)
       // check if element at i equals value
       // if true 
-        // set the value of i to the value of i+1
-                
-      for(int i = 0; i < count; i++)
+      // set the value of i to the value of i+1
+
+      /*for(int i = 0; i < count; i++)
       {
         if(list[i].Equals(value))
         {
@@ -102,7 +102,32 @@ namespace CustomList
           }
         }
       }
-      return false;
+      return false;*/
+
+      T[] results = new T[capacity];
+      bool valueExists;
+      int resultsIndexer;
+
+      valueExists = true;
+      resultsIndexer = 0;
+
+      for (int i = 0; i < count; i++)
+      {
+        if (!list[i].Equals(value))
+        {
+          results[resultsIndexer] = list[i];
+          resultsIndexer++;
+        }
+      }
+
+      if(resultsIndexer == count)
+      {
+        valueExists = false;
+      }
+
+      count--;
+      list = results;
+      return valueExists;
     }
 
     public override string ToString()
