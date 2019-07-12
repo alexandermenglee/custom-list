@@ -123,6 +123,7 @@ namespace CustomList
       if(resultsIndexer == count)
       {
         valueExists = false;
+        return valueExists;
       }
 
       count--;
