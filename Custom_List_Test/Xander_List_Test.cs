@@ -745,5 +745,35 @@ namespace Custom_List_Test
       Assert.AreEqual(expected.ToString(), actual.ToString());
     }
 
+    // ***********************************************************************
+    // IENUMERATOR METHOD UNIT TESTS
+
+    [TestMethod]
+    public void IEnumerator_LoopThroughList_CreatesStringOfAllNumbersInList()
+    {
+      // Arrange
+      XanderList<int> expected = new XanderList<int>();
+      XanderList<int> actual = new XanderList<int>();
+
+      XanderList<int> testList = new XanderList<int>();
+      testList.Add(1);
+      testList.Add(2);
+      testList.Add(3);
+
+      // add to expected list
+      expected.Add(1);
+      expected.Add(2);
+      expected.Add(3);
+
+      // Act
+      foreach (int number in testList)
+      {
+        actual.Add(number);
+      }
+      
+      // Assert
+      Assert.AreEqual(expected.ToString(), actual.ToString());
+    }
+
   }
 }

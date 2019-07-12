@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace CustomList
 {
-  public class XanderList<T>
+  public class XanderList<T> : IEnumerable
   {
     // Member variables
     private int count;
@@ -201,6 +202,15 @@ namespace CustomList
       }
 
       return results;
+    }
+
+    // implementing IEnumerable
+    public IEnumerator GetEnumerator()
+    {
+      for (int i = 0; i < count; i++)
+      {
+        yield return list[i];
+      }
     }
   }
 }
