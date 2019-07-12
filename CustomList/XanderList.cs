@@ -52,7 +52,7 @@ namespace CustomList
       count = 0;
     }
     
-
+    // Add method
     public void Add(T input)
     {
       // if count does not equal capacity add it into the list
@@ -83,45 +83,19 @@ namespace CustomList
       count++;
     }
 
+    // Remove method
     public bool Remove(T value)
     {
-      // loop through array (list)
-      // check if element at i equals value
-      // if true 
-      // set the value of i to the value of i+1
-
-      /*for(int i = 0; i < count; i++)
-      {
-        if(list[i].Equals(value))
-        {
-          if(count == 1)
-          {
-            IntitializeNewArray();
-            return true;
-          }
-          else
-          {
-            for (int j = i; j < count - 1; j++)
-            {
-              list[j] = list[j + 1];
-            }
-            count--;
-            return true;
-          }
-        }
-      }
-      return false;*/
-
       T[] results = new T[capacity];
-      bool valueExists;
       int resultsIndexer;
+      bool valueExists;
 
-      valueExists = true;
       resultsIndexer = 0;
+      valueExists = true;
 
       for (int i = 0; i < count; i++)
       {
-        if (!list[i].Equals(value))
+        if(!list[i].Equals(value))
         {
           results[resultsIndexer] = list[i];
           resultsIndexer++;
@@ -138,7 +112,8 @@ namespace CustomList
       list = results;
       return valueExists;
     }
-
+    
+    // ToString method
     public override string ToString()
     {
       // instantiate empty string variable
