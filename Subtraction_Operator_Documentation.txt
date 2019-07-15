@@ -3,17 +3,17 @@ XanderList<T> - Operator Overload
 Elements in the right-hand side XanderList are removed from the left-hand side XanderList.
 
 Method Signature:
-public static XanderList<T> operator -(XanderList<T> modifiedList, XanderList<T> checkList)
+public static XanderList<T> operator -(XanderList<T> list1, XanderList<T> list2)
 
 Parameters:
-XanderList<T> modifiedList
+XanderList<T> list1
   The list that has its elements removed
 
-XanderList<T> checkList
-  The list that contains the elements to to remove from modifiedList
+XanderList<T> list2
+  The list that contains the elements to to remove from list1
 
 Return:
-Returns modifiedList of type XanderList<T>
+Returns a new XanderList with elements in list2 removed from list1
 
 Example:
 XanderList<int> list1 = new XanderList<int>() {1,2,3,4,5}; // list1 = {1,2,3,4,5}

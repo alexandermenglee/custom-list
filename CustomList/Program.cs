@@ -10,19 +10,33 @@ namespace CustomList
   {
     static void Main(string[] args)
     {
-      XanderList<int> test = new XanderList<int>();
-      test.Add(1);
-      test.Add(2);
-      test.Add(3);
-      test.Add(4);
-      test.Add(5);
+      XanderList<int> expected = new XanderList<int>();
+      XanderList<int> actual = new XanderList<int>();
+      XanderList<int> testList1 = new XanderList<int>();
+      XanderList<int> testList2 = new XanderList<int>();
 
-      Console.WriteLine(test[0]);
-      Console.WriteLine(test[1]);
-      Console.WriteLine(test[2]);
-      Console.WriteLine(test[3]);
-      Console.WriteLine(test[4]);
-      Console.WriteLine(test[5]);
+      // adding to expected list
+      expected.Add(1);
+
+      // adding to testList1
+      testList1.Add(1);
+      testList1.Add(2);
+      testList1.Add(2);
+      testList1.Add(3);
+
+      // adding to testList2
+      testList2.Add(2);
+      testList2.Add(3);
+
+      // Act
+      testList1 = testList1 - testList2;
+
+      foreach(int element in testList1)
+      {
+        Console.WriteLine(element);
+      }
+
+      /* Used to keep console  open */
       Console.ReadLine();
     }
   }

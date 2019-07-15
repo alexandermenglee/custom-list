@@ -154,19 +154,23 @@ namespace CustomList
     }
 
     // - operator overload method
-    public static XanderList<T> operator -(XanderList<T> modifiedList, XanderList<T> checkList)
+    public static XanderList<T> operator -(XanderList<T> list1, XanderList<T> list2)
     {
-      for(int i = 0; i < checkList.Count; i++)
+      XanderList<T> results = new XanderList<T>();
+
+      for(int i = 0; i < list2.Count; i++)
       {
-        for(int j = 0; j < modifiedList.Count; j++)
+        for(int j = 0; j < list1.Count; j++)
         {
-          if (checkList[i].Equals(modifiedList[j]))
+          if (list2[i].Equals(list1[j]))
           {
-            modifiedList.Remove(modifiedList[j]);
+            list1.Remove(list1[j]);
           }
         }
       }
-      return modifiedList;
+
+      results = list1;
+      return results;
     }
 
     // Zip method
