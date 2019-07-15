@@ -170,7 +170,12 @@ namespace CustomList
     public static XanderList<T> operator -(XanderList<T> list1, XanderList<T> list2)
     {
       XanderList<T> results = new XanderList<T>();
-      results = list1;
+      
+      // creates a new list so list1 is not modified
+      for(int i = 0; i < list1.Count; i++)
+      {
+        results.Add(list1[i]);
+      }
 
       for(int i = 0; i < list2.Count; i++)
       {
@@ -222,13 +227,19 @@ namespace CustomList
       return results;
     }
 
-    // implementing IEnumerable
+    // Implementing IEnumerable
     public IEnumerator GetEnumerator()
     {
       for (int i = 0; i < count; i++)
       {
         yield return list[i];
       }
+    }
+
+    // Selection Sort algorithm
+    public void SortList()
+    {
+      // 
     }
   }
 }
