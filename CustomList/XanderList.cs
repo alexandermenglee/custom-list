@@ -92,10 +92,23 @@ namespace CustomList
 
       for (int i = 0; i < count; i++)
       {
-        if(!list[i].Equals(value))
+        if (!list[i].Equals(value))
         {
           results[resultsIndexer] = list[i];
           resultsIndexer++;
+        }
+        else
+        {
+          // if list at i equals value,
+          // increment i, add the rest of the list values into results
+          // break
+          for (int j = i + 1; j < count; j++)
+          {
+            results[resultsIndexer] = list[j];
+            resultsIndexer++;
+          }
+
+          break;
         }
       }
 
@@ -157,19 +170,20 @@ namespace CustomList
     public static XanderList<T> operator -(XanderList<T> list1, XanderList<T> list2)
     {
       XanderList<T> results = new XanderList<T>();
+      results = list1;
 
       for(int i = 0; i < list2.Count; i++)
       {
-        for(int j = 0; j < list1.Count; j++)
+        for(int j = 0; j < results.Count; j++)
         {
-          if (list2[i].Equals(list1[j]))
+          if (list2[i].Equals(results[j]))
           {
-            list1.Remove(list1[j]);
+            results.Remove(results[j]);
+            j--;
           }
         }
       }
 
-      results = list1;
       return results;
     }
 

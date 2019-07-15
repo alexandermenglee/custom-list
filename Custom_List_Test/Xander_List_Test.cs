@@ -540,7 +540,7 @@ namespace Custom_List_Test
       Assert.AreEqual(expected.ToString(), actual.ToString());
     }
 
-/*    [TestMethod]
+    [TestMethod]
     public void SubtractionOperator_DuplicateValues_RemoveAllValues()
     {
       // Arrange
@@ -556,18 +556,18 @@ namespace Custom_List_Test
       testList1.Add(1);
       testList1.Add(2);
       testList1.Add(2);
-      testList2.Add(3);
+      testList1.Add(3);
 
       // adding to testList2
       testList2.Add(2);
       testList2.Add(3);
 
       // Act
-      testList1 = testList1 - testList2;
+      actual = testList1 - testList2;
 
       // Assert
-      Assert.AreEqual(testList1.ToString(), expected.ToString());
-    }*/
+      Assert.AreEqual(expected.ToString(), actual.ToString());
+    }
 
     // ***********************************************************************
     // ZIP METHOD UNIT TESTS

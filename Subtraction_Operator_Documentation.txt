@@ -1,6 +1,7 @@
 XanderList<T> - Operator Overload
 
 Elements in the right-hand side XanderList are removed from the left-hand side XanderList.
+NOTE* THIS METHOD REMOVES ALL INSTANCES FROM LIST1 NOT JUST THE FIRST OCCURRENCE
 
 Method Signature:
 public static XanderList<T> operator -(XanderList<T> list1, XanderList<T> list2)
