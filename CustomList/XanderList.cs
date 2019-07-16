@@ -85,42 +85,41 @@ namespace CustomList
     {
       T[] results = new T[capacity];
       int resultsIndexer;
-      bool valueExists;
+      int indexOfFoundValue;
+      indexOfFoundValue = -1;
 
       resultsIndexer = 0;
-      valueExists = true;
 
+      // find index of value
       for (int i = 0; i < count; i++)
       {
-        if (!list[i].Equals(value))
+        if(list[i].Equals(value))
         {
-          results[resultsIndexer] = list[i];
-          resultsIndexer++;
-        }
-        else
-        {
-          // if list at i equals value,
-          // increment i, add the rest of the list values into results
-          // break
-          for (int j = i + 1; j < count; j++)
-          {
-            results[resultsIndexer] = list[j];
-            resultsIndexer++;
-          }
-
-          break;
+          indexOfFoundValue = i;
         }
       }
 
-      if(resultsIndexer == count)
+      // Check if no value was found
+      if (indexOfFoundValue == -1)
       {
-        valueExists = false;
-        return valueExists;
+        return false;
       }
 
-      count--;
+      // add a all elements into new array except at the index found
+      for (int i = 0; i < count; i++)
+      {
+        if(i == indexOfFoundValue)
+        {
+          continue;
+        }
+
+        results[resultsIndexer] = list[i];
+        resultsIndexer++;
+      }
+
       list = results;
-      return valueExists;
+      count--;
+      return true;
     }
     
     // ToString method
@@ -170,16 +169,16 @@ namespace CustomList
     public static XanderList<T> operator -(XanderList<T> list1, XanderList<T> list2)
     {
       XanderList<T> results = new XanderList<T>();
-      
+
       // creates a new list so list1 is not modified
-      for(int i = 0; i < list1.Count; i++)
+      for (int i = 0; i < list1.Count; i++)
       {
         results.Add(list1[i]);
       }
 
-      for(int i = 0; i < list2.Count; i++)
+      for (int i = 0; i < list2.Count; i++)
       {
-        for(int j = 0; j < results.Count; j++)
+        for (int j = 0; j < results.Count; j++)
         {
           if (list2[i].Equals(results[j]))
           {
